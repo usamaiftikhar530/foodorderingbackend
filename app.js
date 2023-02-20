@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cookieparser());
 
 app.use(require("./router/auth"));
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 5000;
 
 
 
