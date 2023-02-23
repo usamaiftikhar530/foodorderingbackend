@@ -38,6 +38,7 @@ router.post("/api/register",async function(req,res){
 //----------------------Signin------------------------//
 router.post("/api/signin",async function (req,res){
     try{
+        console.log("Inside /api/signin");
         const {email, password} = req.body;
 
         if(!email || !password){
@@ -53,8 +54,6 @@ router.post("/api/signin",async function (req,res){
             res.cookie("jwtoken",token,{
                 expires: new Date(Date.now() + 25892000000),
                 httpOnly:true,
-                sameSite:'none',
-                domain: '.netlify.app'
             });
 
             if(!isMatch){
