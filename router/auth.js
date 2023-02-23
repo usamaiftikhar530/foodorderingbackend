@@ -8,6 +8,7 @@ require("../db/conn");
 const User = require('../model/userSchema');
 
 router.get("/",function (req, res){
+    console.log("Inside / means Home");
     res.send("Home Page");
 });
 
