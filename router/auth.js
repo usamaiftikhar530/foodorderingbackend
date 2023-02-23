@@ -7,10 +7,10 @@ const authenticate = require("../middleware/authenticate");
 require("../db/conn");
 const User = require('../model/userSchema');
 
-router.get("/",function (req, res){
-    console.log("Inside / means Home");
-    res.send("Home Page");
-});
+// router.get("/",function (req, res){
+//     console.log("Inside / means Home");
+//     res.send("Home Page");
+// });
 
 //----------------Register Using Async Await---------------------//
 router.post("/api/register",async function(req,res){
