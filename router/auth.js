@@ -52,7 +52,9 @@ router.post("/api/signin",async function (req,res){
             const token = await userLogin.generateAuthToken();
             res.cookie("jwtoken",token,{
                 expires: new Date(Date.now() + 25892000000),
-                httpOnly:true
+                httpOnly:true,
+                sameSite:'none',
+                domain: '.netlify.app'
             });
 
             if(!isMatch){
