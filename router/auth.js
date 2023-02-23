@@ -12,7 +12,7 @@ router.get("/",function (req, res){
 });
 
 //----------------Register Using Async Await---------------------//
-router.post("/register",async function(req,res){
+router.post("/api/register",async function(req,res){
     const {name, email, password, cpassword} = req.body;
     
     if(!name || !email || !password || !cpassword){
@@ -36,7 +36,7 @@ router.post("/register",async function(req,res){
 });
 
 //----------------------Signin------------------------//
-router.post("/signin",async function (req,res){
+router.post("/api/signin",async function (req,res){
     try{
         const {email, password} = req.body;
 
@@ -71,7 +71,7 @@ router.post("/signin",async function (req,res){
 })
 
 //---------------------- Contact Form ------------------------//
-router.post("/contact",authenticate,async function (req, res){
+router.post("/api/contact",authenticate,async function (req, res){
     try {
         const {name, email, message} = req.body;
         if(!name || !email || !message){
@@ -92,28 +92,28 @@ router.post("/contact",authenticate,async function (req, res){
 
 
 // ---------------------- About -------------------------//
-router.get("/about",authenticate,function (req, res){
+router.get("/api/about",authenticate,function (req, res){
     res.send(req.rootUser);
 });
 
 // ---------------------- Get Data -------------------------//
-router.get("/getdata",authenticate,function (req, res){
+router.get("/api/getdata",authenticate,function (req, res){
     res.send(req.rootUser);
 });
 
 // ---------------------- Log Out -------------------------//
-router.get("/logout",function (req, res){
+router.get("/api/logout",function (req, res){
     res.clearCookie('jwtoken', {path:'/'});
     res.status(200).send("User Logout");
 });
 
 //---------------------- Cart ------------------------//
-router.get("/cart",authenticate,function (req,res){
+router.get("/api/cart",authenticate,function (req,res){
     res.send(req.rootUser);
 });
 
 //---------------Add Product in Cart-------------------//
-router.post("/cart",authenticate,async function (req,res){
+router.post("/api/cart",authenticate,async function (req,res){
     try{
         const {productName} = req.body;
         if(!productName){
@@ -132,7 +132,7 @@ router.post("/cart",authenticate,async function (req,res){
 });
 
 //--------------Delete Product in Cart--------------//
-router.delete("/cart",authenticate, async function (req,res){
+router.delete("/api/cart",authenticate, async function (req,res){
     try {
         const {productName} = req.body;
         if(!productName){
